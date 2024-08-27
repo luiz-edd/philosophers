@@ -1,26 +1,65 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/13 15:49:03 by leduard2          #+#    #+#             */
-/*   Updated: 2024/06/13 15:55:02 by leduard2         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "philo.h"
 
-#include "philosophers.h"
-
-size_t	string_to_sizet(char *str)
+void	error_exit(const char *error)
 {
-	size_t num;
-
-	num = 0;
-	while (*str >= '0' && *str <= '9')
-	{
-		num = num * 10 + (*str - '0');
-		str++;
-	}
-	return (num);
+	printf(RED "%s\n" RST, error);
+	exit(EXIT_FAILURE);
 }
+
+long	ft_atol(char *str)
+{
+	char	*c;
+	int		i;
+	int		sign;
+	long	sum;
+
+	i = 0;
+	sign = 1;
+	c = str;
+	sum = 0;
+	while ((c[i] >= '\t' && c[i] <= '\r') || c[i] == ' ')
+		i++;
+	if (c[i] == '-')
+	{
+		sign *= -1;
+		i++;
+	}
+	else if (c[i] == '+')
+		i++;
+	while (ft_isdigit(c[i]))
+	{
+		sum = (sum * 10) + (c[i] - '0');
+		i++;
+	}
+	return (sum * sign);
+}
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	if (s1[i] != s2[i])
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	else
+		return (0);
+}
+
+size_t	ft_strlen(const char *s)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+

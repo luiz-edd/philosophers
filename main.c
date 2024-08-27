@@ -1,27 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: leduard2 <leduard2@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/12 15:32:19 by leduard2          #+#    #+#             */
-/*   Updated: 2024/06/26 15:31:04 by leduard2         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "philo.h"
 
-#include "philosophers.h"
+// ./philo 5 800 200 200 [5]
+//  philo_nbr, time_to_die, time_to_eat, time_to_sleep, [nbr_meals]
 
 int	main(int argc, char **argv)
 {
 	t_table table;
-	
-	if(check_args(argc, argv))
-	{
-		set_table(&table, argv);
-		set_philos(&table);
-		start_dinner(&table);
-		
-	}
-	return (EXIT_FAILURE);
+
+	validate_arguments(argc, argv);
+	init_data(argv, &table);
 }
